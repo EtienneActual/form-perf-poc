@@ -1,96 +1,129 @@
 # POC Form Performance
 
-Ce projet présente une interface simple pour comparer deux bibliothèques de formulaires React :
+Ce projet présente une interface complète pour comparer deux bibliothèques de formulaires React avec validation avancée :
 
-- TanStack Form (@tanstack/react-form)
-- Formik
+- **TanStack Form** (@tanstack/react-form) avec validation **Zod**
+- **Formik** avec validation **Yup**
 
-## Fonctionnalités
+## 🚀 Fonctionnalités
 
-- Interface utilisateur claire avec navigation React Router
-- Accès direct aux deux implémentations de formulaire via la page d'accueil
-- Contrôle du nombre de champs dans chaque formulaire (de 1 à 50)
-- Validation des champs en temps réel
-- Affichage des résultats de soumission des formulaires
-- Interface utilisateur Material UI pour une expérience utilisateur moderne
+- **Interface utilisateur moderne** avec navigation React Router
+- **Configuration flexible des champs** : Choisir le nombre de champs par type
+- **5 types de champs supportés** :
+  - TextField (champ texte)
+  - Select (liste déroulante)
+  - Autocomplete (saisie avec suggestions)
+  - Checkbox (case à cocher)
+  - DatePicker (sélecteur de date)
+- **Validation robuste** au niveau des champs et du formulaire
+- **Affichage des erreurs** en temps réel avec Material UI Alerts
+- **Mesure de performance** avec timestamps de soumission
+- **Interface utilisateur cohérente** avec Material UI
 
-## Technologies utilisées
+## 🛠 Technologies utilisées
 
-- React 19
-- TypeScript
-- Vite
-- React Router
-- Material UI
-- TanStack Form
-- Formik
-- Yup (pour la validation dans Formik)
+- **React 19** + **TypeScript**
+- **Vite** (build system)
+- **React Router** (navigation)
+- **Material UI** (composants UI + DatePicker)
+- **TanStack Form** avec validation **Zod** (Standard Schema)
+- **Formik** avec validation **Yup**
+- **date-fns** (gestion des dates)
+- **ESLint** (qualité du code)
 
-## Structure du projet
+## 📁 Structure du projet
 
-- `/src/components/FormA` : Implémentation du formulaire avec TanStack Form
-- `/src/components/FormB` : Implémentation du formulaire avec Formik
-- `/src/pages` : Pages de l'application (Accueil, TanStack, Formik)
-- `/src/theme.tsx` : Configuration du thème Material UI
+```
+src/
+├── components/
+│   ├── FormA/                    # TanStack Form + Zod
+│   ├── FormB/                    # Formik + Yup
+│   └── FieldTypeControls.tsx     # Configuration des types de champs
+├── pages/                        # Pages de l'application
+├── types/                        # Définitions TypeScript
+├── validation/
+│   ├── zodSchemas.ts            # Schémas Zod pour TanStack Form
+│   └── yupSchemas.ts            # Schémas Yup pour Formik
+├── utils/                       # Utilitaires
+└── theme.tsx                    # Configuration Material UI
+```
 
-## Comment utiliser
+## 🚀 Installation et utilisation
 
-1. Clonez ce dépôt
-2. Installez les dépendances :
+1. **Clonez le dépôt**
+```bash
+git clone <url-du-depot>
+cd poc-form-perf
+```
 
+2. **Installez les dépendances**
 ```bash
 npm install
 ```
 
-3. Lancez l'application en mode développement :
-
+3. **Lancez en mode développement**
 ```bash
 npm run dev
 ```
 
-4. Ouvrez votre navigateur à l'adresse indiquée par Vite
+4. **Ouvrez votre navigateur** à l'adresse indiquée par Vite (généralement http://localhost:5173)
 
-## Fonctionnement
+## 📋 Commandes disponibles
 
-1. La page d'accueil présente deux boutons pour naviguer vers chaque formulaire
-2. Chaque page de formulaire permet d'ajuster le nombre de champs (1-50)
-3. Chaque formulaire utilise Material UI TextField pour une interface utilisateur cohérente
-4. La validation des champs est effectuée en temps réel (minimum 3 caractères requis)
-5. Après la soumission, les valeurs du formulaire sont affichées au format JSON
-   project: ['./tsconfig.node.json', './tsconfig.app.json'],
-   tsconfigRootDir: import.meta.dirname,
-   },
-   // other options...
-   },
-   },
-   ])
+```bash
+npm run dev        # Serveur de développement
+npm run build      # Build de production
+npm run preview    # Aperçu du build
+npm run lint       # Vérification du code
+npm run clean      # Nettoyage
+```
 
-````
+## 🎯 Fonctionnement
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Configuration des champs
+- **Page d'accueil** : Navigation vers TanStack Form ou Formik
+- **Configuration flexible** : Définir le nombre de champs pour chaque type (0-20)
+- **Types supportés** : TextField, Select, Autocomplete, Checkbox, DatePicker
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Validation
+#### TanStack Form + Zod
+- **Validation directe** : Schémas Zod sans adapter (TanStack Form v1)
+- **Validation au niveau des champs** : Validation en temps réel
+- **Validation au niveau du formulaire** : Règles transversales avec `onSubmitAsync`
+- **Affichage des erreurs** : Utilisation de `form.Subscribe` pour les erreurs de formulaire
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-````
+#### Formik + Yup
+- **Schémas dynamiques** : Génération automatique des schémas Yup
+- **Validation au niveau des champs** : Validation individuelle des champs
+- **Validation au niveau du formulaire** : Fonction de validation personnalisée
+- **Validation onSubmit** : Validation complète à la soumission
+
+### Règles de validation
+- **TextField** : Requis + minimum 3 caractères
+- **Select/Autocomplete** : Sélection requise
+- **Checkbox** : Aucune validation (booléen)
+- **DatePicker** : Optionnel, mais si sélectionné doit être dans le futur
+- **Formulaire** : Au moins un champ requis doit être rempli
+
+## 🔧 Architecture de validation
+
+Le projet implémente une validation similaire pour les deux bibliothèques :
+
+- **Validation au niveau des champs** : Feedback immédiat pendant la saisie
+- **Validation au niveau du formulaire** : Règles transversales et complexes
+- **Validation onSubmit** : Vérification finale avant soumission
+- **Gestion d'erreurs** : Affichage cohérent avec Material UI Alerts
+
+## 📊 Comparaison de performance
+
+L'application permet de comparer les performances entre TanStack Form et Formik avec :
+- **Timestamp de soumission** : Mesure du temps de traitement
+- **Configuration identique** : Mêmes types de champs et validation
+- **Interface cohérente** : Material UI pour une comparaison équitable
+
+## 🧪 Tests et qualité
+
+- **TypeScript strict** : Typage complet et vérifications
+- **ESLint** : Règles de qualité et bonnes pratiques
+- **Build optimisé** : Vite pour des performances optimales
+- **Validation cross-browser** : Compatible avec les navigateurs modernes
