@@ -1,0 +1,67 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.form-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 60px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  padding: 1rem 2rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.tanstack-button {
+  background-color: #0081cb;
+  color: white;
+}
+
+.tanstack-button:hover {
+  background-color: #0069a3;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 105, 163, 0.4);
+}
+
+.formik-button {
+  background-color: #6c5ce7;
+  color: white;
+}
+
+.formik-button:hover {
+  background-color: #5649c0;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(86, 73, 192, 0.4);
+}
