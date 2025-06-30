@@ -8,7 +8,17 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "clean": "rm -rf dist && rm -rf node_modules"
+    "clean": "rm -rf dist && rm -rf node_modules",
+    "test:perf": "playwright test --config=playwright.config.ts",
+    "test:perf:rendering": "playwright test tests/performance/form-rendering.spec.ts",
+    "test:perf:interaction": "playwright test tests/performance/field-interaction.spec.ts",
+    "test:perf:validation": "playwright test tests/performance/validation.spec.ts",
+    "test:perf:scalability": "playwright test tests/performance/scalability.spec.ts",
+    "test:perf:quick": "playwright test tests/performance/form-rendering.spec.ts tests/performance/validation.spec.ts",
+    "test:perf:full": "npm run test:perf && npm run perf:report",
+    "perf:report": "node scripts/generate-report.js",
+    "perf:setup": "node scripts/setup-perf-tests.js",
+    "perf:clean": "rm -rf performance-reports"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -28,6 +38,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",
+    "@playwright/test": "^1.53.1",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react": "^4.5.2",

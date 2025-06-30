@@ -70,12 +70,25 @@ npm run dev
 
 ## 📋 Commandes disponibles
 
+### Développement
 ```bash
 npm run dev        # Serveur de développement
 npm run build      # Build de production
 npm run preview    # Aperçu du build
 npm run lint       # Vérification du code
 npm run clean      # Nettoyage
+```
+
+### Tests de performance
+```bash
+npm run perf:setup           # Initialiser l'environnement de test
+npm run test:perf:quick      # Tests rapides (rendu + validation)
+npm run test:perf:full       # Tests complets + génération de rapport
+npm run test:perf:rendering  # Tests de rendu uniquement
+npm run test:perf:validation # Tests de validation uniquement
+npm run test:perf:scalability # Tests de scalabilité uniquement
+npm run perf:report          # Générer un rapport à partir des résultats
+npm run perf:clean           # Nettoyer les anciens rapports
 ```
 
 ## 🎯 Fonctionnement
@@ -126,4 +139,52 @@ L'application permet de comparer les performances entre TanStack Form et Formik 
 - **TypeScript strict** : Typage complet et vérifications
 - **ESLint** : Règles de qualité et bonnes pratiques
 - **Build optimisé** : Vite pour des performances optimales
+- **Tests de performance Playwright** : Mesures automatisées et reproductibles
+- **Rapports détaillés** : Analyses JSON et HTML avec graphiques
 - **Validation cross-browser** : Compatible avec les navigateurs modernes
+
+## 🏃‍♂️ Tests de performance
+
+### Aperçu
+
+Le projet inclut une suite complète de tests de performance automatisés utilisant **Playwright** pour comparer objectivement TanStack Form et Formik.
+
+### Métriques mesurées
+
+- **Temps de rendu** : Vitesse d'affichage initial des formulaires
+- **Réactivité** : Temps de réponse lors de la saisie
+- **Performance de validation** : Comparaison Zod vs Yup
+- **Scalabilité** : Impact du nombre de champs (5-100 champs)
+- **Utilisation mémoire** : Consommation RAM des deux librairies
+- **Soumission** : Temps de traitement complet
+
+### Démarrage rapide
+
+```bash
+# 1. Initialiser l'environnement de test
+npm run perf:setup
+
+# 2. Lancer un test rapide (3-5 minutes)
+npm run test:perf:quick
+
+# 3. Générer un rapport HTML
+npm run perf:report
+
+# 4. Ouvrir le rapport dans votre navigateur
+# Le chemin sera affiché dans la console
+```
+
+### Tests complets
+
+```bash
+# Suite complète de tests + rapport automatique (10-15 minutes)
+npm run test:perf:full
+```
+
+### Résultats
+
+Les rapports incluent :
+- **Graphiques comparatifs** entre TanStack Form et Formik
+- **Recommandations** basées sur les métriques
+- **Analyse de scalabilité** selon le nombre de champs
+- **Données brutes** exportables en JSON
