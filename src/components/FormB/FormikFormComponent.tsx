@@ -85,7 +85,7 @@ export const FormikFormComponent = ({
   });
 
   return (
-    <Box className="form-container">
+    <Box className="form-container" data-testid="form-container">
       <h2>Formik Form</h2>
 
       {formErrors.length > 0 && (

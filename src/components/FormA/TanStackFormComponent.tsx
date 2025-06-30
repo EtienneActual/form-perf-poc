@@ -61,7 +61,7 @@ export const TanStackFormComponent = ({
   });
 
   return (
-    <Box className="form-container">
+    <Box className="form-container" data-testid="form-container">
       <h2>TanStack Form</h2>
 
       <form.Subscribe selector={(state) => [state.errors, state.errorMap]}>

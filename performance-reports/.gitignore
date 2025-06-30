@@ -1,0 +1,6 @@
+# Ignore performance test results
+*.json
+*.html
+
+# Keep directory structure
+!.gitignore
